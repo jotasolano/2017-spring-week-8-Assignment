@@ -14,6 +14,10 @@ var canvas = d3.select('#plot1').append('canvas')
 
 var cx = canvas.getContext('2d');
 
+// another option
+// var canvas = document.createElement('canvas')
+// canvas.width = w
+
 // cx.translate(0, 10); ???
 
 
@@ -26,21 +30,18 @@ cx.fillRect(0, 0, width, height);
 function grid(){
 	cx.strokeStyle = 'rgb(180, 180, 180)';
 	cx.lineWidth = 0.5;
+	cx.beginPath();
 
 	for (var i = 50; i <= width; i += 50){ // vertical lines
-		cx.beginPath();
 		cx.moveTo(i,0);
 		cx.lineTo(i,height);
-		cx.closePath();
-		cx.stroke();
 	}
-	for (var i = 50; i <= width; i += 50){ // horizontal lines
+	for (var i = 50; i <= height; i += 50){ // horizontal lines
 		cx.beginPath();
 		cx.moveTo(0,i);
 		cx.lineTo(width,i);
-		cx.closePath();
-		cx.stroke();
 	}
+	cx.stroke();
 }
 
 grid();
